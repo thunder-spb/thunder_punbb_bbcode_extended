@@ -1,0 +1,8 @@
+table .bbcode-table {
+	display: fixed;
+	padding:0 0 2px 4px;
+	margin:0 -4px 4px -4px;
+}
+h1.bbcode-extended {
+	clear: both;
+}

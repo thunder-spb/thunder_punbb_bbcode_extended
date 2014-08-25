@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<extension engine="1.0">
+	<id>thunder_punbb_bbcode_extended</id>
+	<title>thunder's BBCode Extended</title>
+	<version>0.1</version>
+	<description>This extension adds extra BBCode tags.</description>
+	<author>thunder // thunder@blackdeath.ru</author>
+	<minversion>1.4.2</minversion>
+	<maxtestedon>1.4.2</maxtestedon>
+	<hooks>
+		<hook id="ps_do_bbcode_replace"><![CDATA[
+			//table
+			$pattern[] = '#\[table\](.*?)\[/table\]#s';
+			$replace[] = '<table class="bbcode-table">$1</table>';
+
+			$pattern[] = '#\[tr\](.*?)\[/tr\]#s';
+			$replace[] = '<tr class="bbcode-table bbcode-table-tr">$1</tr>';
+
+			$pattern[] = '#\[td\](.*?)\[/td\]#s';
+			$replace[] = '<td class="bbcode-table bbcode-table-td">$1</td>';
+
+			//h* headers tags from h1 to h6
+			$pattern[] = '#\[h1\](.*?)\[/h1\]#s';
+			$replace[] = '<h1 class="bbcode-extended">$1</h1>';
+			$pattern[] = '#\[h2\](.*?)\[/h2\]#s';
+			$replace[] = '<h2>$1</h2>';
+			$pattern[] = '#\[h3\](.*?)\[/h3\]#s';
+			$replace[] = '<h3>$1</h3>';
+			$pattern[] = '#\[h4\](.*?)\[/h4\]#s';
+			$replace[] = '<h4>$1</h4>';
+			$pattern[] = '#\[h5\](.*?)\[/h5\]#s';
+			$replace[] = '<h5>$1</h5>';
+			$pattern[] = '#\[h6\](.*?)\[/h6\]#s';
+			$replace[] = '<h6>$1</h6>';
+
+
+		]]></hook>
+		<hook id="ps_preparse_tags_start"><![CDATA[
+			$tags_block[]='table';
+			$tags_block[]='h1';
+			$tags_block[]='h2';
+			$tags_block[]='h3';
+			$tags_block[]='h4';
+			$tags_block[]='h5';
+			$tags_block[]='h6';
+		]]></hook>
+		<hook id="ps_preparse_bbcode_start"><![CDATA[
+			//table
+			$tags[] = 'table';
+			$tags_opened[] = 'table';
+			$tags_closed[] = 'table';
+			$tags_fix[] = 'table';			
+
+			$tags[] = 'tr';
+			$tags_opened[] = 'tr';
+			$tags_closed[] = 'tr';
+			$tags_fix[] = 'tr';			
+
+			$tags[] = 'td';
+			$tags_opened[] = 'td';
+			$tags_closed[] = 'td';
+			$tags_fix[] = 'td';			
+
+			// h* header tags
+			$tags[] = 'h1';
+			$tags_opened[] = 'h1';
+			$tags_closed[] = 'h1';
+			$tags_fix[] = 'h1';			
+
+			$tags[] = 'h2';
+			$tags_opened[] = 'h2';
+			$tags_closed[] = 'h2';
+			$tags_fix[] = 'h2';			
+
+			$tags[] = 'h3';
+			$tags_opened[] = 'h3';
+			$tags_closed[] = 'h3';
+			$tags_fix[] = 'h3';			
+
+			$tags[] = 'h4';
+			$tags_opened[] = 'h4';
+			$tags_closed[] = 'h4';
+			$tags_fix[] = 'h4';			
+
+			$tags[] = 'h5';
+			$tags_opened[] = 'h5';
+			$tags_closed[] = 'h5';
+			$tags_fix[] = 'h5';			
+
+			$tags[] = 'h6';
+			$tags_opened[] = 'h6';
+			$tags_closed[] = 'h6';
+			$tags_fix[] = 'h6';			
+
+		]]></hook>
+		<hook id="he_new_bbcode_text_style"><![CDATA[
+			?>
+			<li>
+				<code>[table][tr][td][/td][/tr][/table]</code> <span>Just a simple table support</span>
+				
+			</li>
+			<li>
+				<code>[h1][/h1]</code> <span>header tags support</span>
+				<samp>
+					<h1>H1 tag</h1><br/>
+					<h2>H2 tag</h2><br/>
+					<h3>H3 tag</h3><br/>
+					<h4>H4 tag</h4><br/>
+					<h5>H5 tag</h5><br/>
+					<h6>H6 tag</h6><br/>
+				</samp>
+				
+			</li>
+
+			<?php
+		]]></hook>
+		<hook id="hd_head">
+			<![CDATA[
+			$forum_head[] = '<link rel="stylesheet" type="text/css" media="screen" href="'.$ext_info['url'].'/bbcode_extended.css" />';
+			]]>
+		</hook>
+		<hook id="hd_viewtopic_head">
+			<![CDATA[
+				$forum_head[] = '<link rel="stylesheet" type="text/css" media="screen" href="'.$ext_info['url'].'/bbcode_extended.css" />';
+			]]>
+		</hook>
+		<hook id="hd_post_head">
+			<![CDATA[
+				$forum_head[] = '<link rel="stylesheet" type="text/css" media="screen" href="'.$ext_info['url'].'/bbcode_extended.css" />';
+			]]>
+		</hook>
+		<hook id="hd_profile-signature_head">
+			<![CDATA[
+				$forum_head[] = '<link rel="stylesheet" type="text/css" media="screen" href="'.$ext_info['url'].'/bbcode_extended.css" />';
+			]]>
+		</hook>
+		<hook id="hd_postedit_head">
+			<![CDATA[
+				$forum_head[] = '<link rel="stylesheet" type="text/css" media="screen" href="'.$ext_info['url'].'/bbcode_extended.css" />';
+			]]>
+		</hook>
+	</hooks>
+</extension>
